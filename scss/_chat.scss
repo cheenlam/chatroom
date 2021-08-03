@@ -1,0 +1,224 @@
+.chatbox{
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin: auto;
+}
+
+
+.chatroom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @at-root .chat_title {
+        height: 35px;
+        line-height: 35px;
+        padding: 0 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        color: #fff;
+        background-color: #000;
+    }
+
+    @at-root .chat_list {
+        margin: 10px 0;
+        border: 1px solid #333;
+        border-radius: 5px;
+        color: #000;
+        overflow: hidden;
+        position: relative;
+        & > div {
+            height: calc(100vh - 150px);
+            padding: 10px;
+            overflow-y: auto;
+            position: relative;
+            &::-webkit-scrollbar {
+                width: 7px;
+                background-color: #fff;
+                box-shadow: 0 0 4px #000 inset;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: linear-gradient(30deg, #eb518c, rgb(235, 235, 233), #d35590);
+                border: none;
+            }
+        }
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: url(../images/bodyBg.jpg) no-repeat center / cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }
+        ul {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        li {
+            max-width: 65%;
+            padding: 10px;
+            flex-shrink: 0;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            align-self: flex-start;
+            &.self {
+                background-color: #effddeb4;
+                align-self: flex-end;
+                .chat_member {
+                    text-align: right;
+                }
+                &::before {
+                    border-width: 7.5px 0 7.5px 13px;
+                    border-color: transparent transparent transparent #effdde;
+                    right: -13px;
+                    left: unset;
+                }
+            }
+        }
+        li::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7.5px 13px 7.5px 0;
+            border-color: transparent #fff transparent transparent;
+            position: absolute;
+            top: 8px;
+            left: -13px;
+        }
+
+        li + li {
+            margin-top: 15px;
+        }
+    }
+
+    @at-root .chat_member {
+        margin-right: 10px;
+        padding-bottom: 2px;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    @at-root .chat_name {
+        padding-left: 5px;
+    }
+    @at-root .chat_ipt {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .chat_txt {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            overflow: auto;
+            position: relative;
+        }  
+        .chat_msg {
+            width: 100%;
+            height: 22px;
+            line-height: 22px;
+            padding: 0 10px;
+            font-size: 1.2rem;
+            @at-root .chat_color {
+                width: 45px;
+                height: 45px;
+                flex-shrink: 0;
+                @include fullNone;
+                cursor: pointer;
+                position: relative;
+                &:hover::before {
+                    filter: grayscale(100%) sepia(100%);
+                }
+    
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: #fff url(../images/chat_color.svg) no-repeat center / 80%;
+                    background-color: #fff;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: 0.3s;
+                }
+            }
+            @at-root .chat_iconBtn {
+                width: 45px;
+                height: 45px;
+                margin: 0 5px;
+                flex-shrink: 0;
+                cursor: pointer;
+                position: relative;
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background: url(../images/chat_selectImg.svg) no-repeat center / 80%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: 0.3s;
+                }
+                &:hover::before {
+                    filter: grayscale(100%) sepia(100%);
+                }
+                &:hover .chat_iconList {
+                    display: block;
+                }
+            }
+        }
+
+        @at-root .chat_take{
+            padding-left: 10px;
+            margin: auto;
+            position: absolute;
+            @include pos(tbl,0); 
+            display: flex;
+            align-items: center;
+            color: #eb518c;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+        
+        .chat_iconList {
+            width: 200px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid #999;
+            position: absolute;
+            right: 0;
+            bottom: 60%;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgb(92, 92, 92) inset;
+            display: none;
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            li {
+                width: calc(100% / 5);
+                padding: 2px;
+                cursor: pointer;
+            }
+            .chat_icon {
+                width: 2rem;
+            }
+        }
+    }
+    
+    @at-root .chat_icon {
+        width: 1.25rem;
+        vertical-align: bottom;
+        background-color: transparent !important;
+    } 
+}
+
