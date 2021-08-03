@@ -74,7 +74,7 @@
                 }
                 &::before {
                     border-width: 7.5px 0 7.5px 13px;
-                    border-color: transparent transparent transparent #effdde;
+                    border-color: transparent transparent transparent #effddeb4;
                     right: -13px;
                     left: unset;
                 }
@@ -86,7 +86,7 @@
             height: 0;
             border-style: solid;
             border-width: 7.5px 13px 7.5px 0;
-            border-color: transparent #fff transparent transparent;
+            border-color: transparent rgba(255, 255, 255, 0.7) transparent transparent;
             position: absolute;
             top: 8px;
             left: -13px;
